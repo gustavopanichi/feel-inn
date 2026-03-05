@@ -1,0 +1,75 @@
+/* ── Google Fonts — must be first ────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Custom Properties ────────────────────────────────────────── */
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Base Styles ──────────────────────────────────────────────────── */
+@layer base {
+  html {
+    @apply scroll-smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-body text-charcoal bg-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  /* Date input styling */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.4;
+    cursor: pointer;
+  }
+
+  /* Select element reset */
+  select {
+    @apply bg-transparent;
+  }
+}
+
+/* ── Component Utilities ──────────────────────────────────────────── */
+@layer components {
+  .container-padding {
+    @apply px-6 md:px-10 lg:px-16;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-36;
+  }
+
+  /* Horizontal rule with sand color */
+  .hr-sand {
+    @apply border-0 border-t border-sand/30 my-12;
+  }
+}
+
+/* ── Animations ───────────────────────────────────────────────────── */
+@keyframes slideDown {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+/* Focus ring override for clean look */
+*:focus-visible {
+  outline: 2px solid theme('colors.sand.DEFAULT');
+  outline-offset: 2px;
+}
+
+/* Smooth scroll behaviour for anchor links */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
