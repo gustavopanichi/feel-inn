@@ -6,12 +6,14 @@ import Image from 'next/image'
 import { footerLegalLinks } from '@/lib/data'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 
-const navLinks = [
+type NavKey = 'properties' | 'owner' | 'about' | 'contact'
+
+const navLinks: { href: string; key: NavKey }[] = [
   { href: '/properties', key: 'properties' },
   { href: '/owner', key: 'owner' },
   { href: '/about', key: 'about' },
   { href: '/contact', key: 'contact' },
-] as const
+]
 
 export default function Footer() {
   const year = new Date().getFullYear()

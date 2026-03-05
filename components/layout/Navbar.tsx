@@ -7,12 +7,14 @@ import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 
-const navLinks = [
+type NavKey = 'properties' | 'owner' | 'about' | 'contact'
+
+const navLinks: { href: string; key: NavKey }[] = [
   { href: '/properties', key: 'properties' },
   { href: '/owner', key: 'owner' },
   { href: '/about', key: 'about' },
   { href: '/contact', key: 'contact' },
-] as const
+]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
