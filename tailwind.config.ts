@@ -10,6 +10,21 @@ const config: Config = {
     extend: {
       colors: {
         // Brand palette
+        terracotta: {
+          DEFAULT: '#AA462A',
+          light: '#c4614a',
+          dark: '#8a3820',
+          50: '#fdf3f0',
+          100: '#fae3dc',
+          200: '#f5c5b8',
+          300: '#ee9f8a',
+          400: '#e3705a',
+          500: '#AA462A',
+          600: '#8a3820',
+          700: '#6e2d1a',
+          800: '#521f12',
+          900: '#36130b',
+        },
         charcoal: {
           DEFAULT: '#1c1c1c',
           50: '#f5f5f5',

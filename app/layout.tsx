@@ -2,28 +2,29 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import { LanguageProvider } from '@/lib/i18n/LanguageContext'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Feeling Inn – Curated Homes & Exceptional Stays in Portugal',
+    default: 'Feeling Inn – Casas Selecionadas & Estadias Excepcionais em Portugal',
     template: '%s | Feeling Inn',
   },
   description:
-    'Feeling Inn offers a handpicked portfolio of premium rental properties across Portugal. Short-term and long-term stays managed with care, from Lisbon apartments to coastal villas.',
-  keywords: ['Portugal rental', 'luxury villa Portugal', 'Lisbon apartment', 'holiday rental Portugal', 'property management Portugal'],
+    'A Feeling Inn oferece um portefólio selecionado de propriedades premium em Portugal. Estadias de curta e longa duração geridas com cuidado, de apartamentos em Lisboa a vilas costeiras.',
+  keywords: ['aluguer Portugal', 'villa luxo Portugal', 'apartamento Lisboa', 'aluguer férias Portugal', 'gestão propriedades Portugal'],
   authors: [{ name: 'Feeling Inn' }],
   openGraph: {
     type: 'website',
-    locale: 'en_PT',
+    locale: 'pt_PT',
     url: 'https://feelinginn.pt',
     siteName: 'Feeling Inn',
-    title: 'Feeling Inn – Curated Homes & Exceptional Stays in Portugal',
-    description: 'Handpicked properties across Portugal, managed with care and delivered with warmth.',
+    title: 'Feeling Inn – Casas Selecionadas & Estadias Excepcionais em Portugal',
+    description: 'Propriedades selecionadas em Portugal, geridas com cuidado e entregues com calor humano.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Feeling Inn – Curated Stays in Portugal',
-    description: 'Handpicked properties across Portugal, managed with care and delivered with warmth.',
+    title: 'Feeling Inn – Estadias Selecionadas em Portugal',
+    description: 'Propriedades selecionadas em Portugal, geridas com cuidado e entregues com calor humano.',
   },
   robots: {
     index: true,
@@ -43,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="pt" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -53,9 +54,11 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body text-charcoal bg-white antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   )

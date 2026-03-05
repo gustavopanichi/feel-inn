@@ -1,11 +1,13 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import SectionContainer from '@/components/ui/SectionContainer'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Button from '@/components/ui/Button'
 import { conciergeServices } from '@/lib/data'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
-// Icon map for concierge services
 function ServiceIcon({ icon }: { icon: string }) {
   const icons: Record<string, React.ReactNode> = {
     key: (
@@ -39,9 +41,8 @@ function ServiceIcon({ icon }: { icon: string }) {
       </svg>
     ),
   }
-
   return (
-    <span className="text-sand">
+    <span className="text-terracotta">
       {icons[icon] ?? (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
@@ -52,10 +53,11 @@ function ServiceIcon({ icon }: { icon: string }) {
 }
 
 export default function ConciergeSection() {
+  const { t } = useLanguage()
+
   return (
     <SectionContainer background="white">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-        {/* Left: image */}
         <div className="relative aspect-[4/5] overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=1000&q=80"
@@ -66,17 +68,14 @@ export default function ConciergeSection() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent" />
         </div>
-
-        {/* Right: content */}
         <div>
           <SectionHeading
-            eyebrow="Concierge services"
-            title="Every detail, considered"
-            subtitle="From the moment you arrive to the moment you leave, our concierge team is at your service — ensuring your stay exceeds every expectation."
+            eyebrow={t.concierge.eyebrow}
+            title={t.concierge.title}
+            subtitle={t.concierge.subtitle}
             align="left"
             className="mb-10"
           />
-
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
             {conciergeServices.map((service) => (
               <div key={service.id} className="flex gap-4">
@@ -85,18 +84,17 @@ export default function ConciergeSection() {
                 </div>
                 <div>
                   <h4 className="text-sm font-body font-medium text-charcoal mb-1">
-                    {service.title}
+                    {t.concierge.services[service.title] ?? service.title}
                   </h4>
                   <p className="text-xs text-charcoal-400 font-body leading-relaxed">
-                    {service.description}
+                    {t.concierge.serviceDescriptions[service.title] ?? service.description}
                   </p>
                 </div>
               </div>
             ))}
           </div>
-
           <Button href="/contact" variant="primary">
-            Request concierge services
+            {t.concierge.cta}
           </Button>
         </div>
       </div>
