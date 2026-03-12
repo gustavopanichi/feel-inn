@@ -58,7 +58,7 @@ export default function Navbar() {
               height={78}
               priority
               className={clsx(
-                'transition-all duration-500 w-[88px] md:w-[110px]',
+                'transition-all duration-500 w-[88px] md:w-[110px] mt-3',
                 isSolid ? '' : 'brightness-0 invert'
               )}
             />
